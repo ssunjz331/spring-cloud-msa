@@ -24,6 +24,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/**
+        - id: catalogs-service
+          - uri: lb://CATALOGS-SERVICE
+            predicates:
+              - Path=/catalog-service/**
         - id: first-service
 #          uri: http://localhost:8081/
           uri: lb://FIRST-SERVICE

@@ -1,10 +1,12 @@
 package com.example.userservicce.dto;
 
+import com.example.userservicce.vo.ResponseOrder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class UserDto {
@@ -23,4 +25,6 @@ public class UserDto {
     private String userId;
     private Date createdAt;
     private String encryptedPwd;
+
+    private List<ResponseOrder> orders;
 }
