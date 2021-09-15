@@ -31,5 +31,11 @@ eureka:
 
 greeting:
   message: Hi
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+
 
 

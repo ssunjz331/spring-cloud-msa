@@ -23,7 +23,11 @@ spring:
         - id: first-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/**
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: catalogs-service
           - uri: lb://CATALOGS-SERVICE
             predicates:
@@ -40,3 +44,8 @@ spring:
                 baseMessage: Hi, There
                 preLogger: true
                 postLogger: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace
